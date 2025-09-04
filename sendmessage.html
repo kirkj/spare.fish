@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title></title>
+  </head>
+
+  <body>
+    <h1>Send Message</h1>
+    <p>
+      <button type="button" onclick="send()">Send message</button>
+    </p>
+
+    <script>
+      function send() {
+        var message = "Advertisement says Hi!" + (new Date().getTime());
+        window.parent.postMessage(
+          message,
+          "https://well-secured.com"
+        );
+      }
+    </script>
+  </body>
+</html>

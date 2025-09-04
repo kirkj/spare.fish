@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title></title>
+</head>
+
+<body>
+<h1>CORS demo</h1>
+
+<h2 id='demo'></h2>
+
+<p>
+  <button type="button" onclick="req('https://spare.fish/sameorigin.json')">Request from spare.fish</button>
+</p>
+<p>
+  <button type="button" onclick="req('https://well-secured.com/secret.json')">Request secret from well-secured.com</button>
+</p>
+
+<p>
+  <button type="button" onclick="req('https://well-secured.com/cors/articles.json')">Request articles from well-secured.com</button>
+</p>
+
+<script>
+function req(url) {
+  document.getElementById("demo").innerHTML = "";
+
+  var xhr = new XMLHttpRequest();
+
+  xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       document.getElementById("demo").innerHTML = xhr.responseText;
+    }
+  };
+
+  xhr.open('GET', url, true);
+  xhr.send();
+}
+</script>
+
+<hr>
+</body> </html>
